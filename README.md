@@ -1,5 +1,5 @@
 ---
-title: "payoff Table"
+title: "payoff Table without probability"
 author: "Kyaw Min Khaing"
 date: "2025-03-22"
 output: html_document
