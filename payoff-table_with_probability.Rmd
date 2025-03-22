@@ -1,0 +1,38 @@
+---
+title: "payoff_table with probability"
+author: "Kyaw Min Khaing"
+date: "2025-03-22"
+output: html_document
+---
+##### Load library
+```{r}
+library(pacman)
+p_load(tidyverse,knitr,DiagrammeR)
+```
+
+##### Create a Payoff Table
+
+```{r}
+payoff_table <- tibble(
+  Treatment = c("Control", "Treatment 1", "Treatment 2"),
+  Outcome_1 = c(4.17, 6.11, 5.53),
+  Outcome_2 = c(5.58, 4.50, 5.80),
+  Outcome_3 = c(5.18, 4.61, 5.28)
+)
+
+# View the payoff table
+payoff_table
+```
+
+##### MAXIMAX Approach (Optimistic Approach)
+
+```{r}
+# MAXIMAX Approach - Optimistic Approach
+maximax_payoff <- payoff_table %>%
+  mutate(Max_Payoff = pmap_dbl(list(Outcome_1, Outcome_2, Outcome_3), max)) %>%
+  arrange(desc(Max_Payoff))
+
+maximax_payoff
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
